@@ -1,49 +1,43 @@
 #include <iostream>
-#include <algorithm>
+#include <string>
 using namespace std;
 
 int main() {
-    const int MAX_SIZE = 100;
-    int arr[MAX_SIZE];
-    int count = 0;
+    const int SIZE = 5;
+    string words[SIZE];
 
-    // Ask user for numbers until they enter -1 and store them in array
-    int num;
-    cout << "Enter numbers (-1 to stop): ";
-    cin >> num;
-    while (num != -1 && count < MAX_SIZE) {
-        arr[count] = num;
-        count++;
-        cin >> num;
+    // Task 1: Ask the user for five words and add them to the array
+    cout << "Enter five words:\n";
+    for (int i = 0; i < SIZE; i++) {
+        cout << "Word " << i + 1 << ": ";
+        cin >> words[i];
     }
 
-    // Print original array
-    cout << "Original array: ";
-    for (int i = 0; i < count; i++) {
-        cout << arr[i] << " ";
+    // Task 2: Change the first word to "Tuesday" and print the whole array
+    words[0] = "Tuesday";
+    cout << "\nModified array:\n";
+    for (int i = 0; i < SIZE; i++) {
+        cout << "Word " << i + 1 << ": " << words[i] << endl;
     }
-    cout << endl;
 
-    // Sort array in ascending order and print it
-    sort(arr, arr + count);
-    cout << "Sorted array: ";
-    for (int i = 0; i < count; i++) {
-        cout << arr[i] << " ";
+    // Task 3: Ask the user for a number and change the corresponding word to "Varia"
+    int number;
+    cout << "\nEnter a number between 1 and 5: ";
+    cin >> number;
+
+    if (number >= 1 && number <= SIZE) {
+        words[number - 1] = "Varia";
     }
-    cout << endl;
-
-    // Find and print minimum and maximum values in array
-    int min_val = arr[0];
-    int max_val = arr[count - 1];
-    cout << "Minimum value: " << min_val << endl;
-    cout << "Maximum value: " << max_val << endl;
-
-    // Calculate and print sum of all elements in array
-    int sum = 0;
-    for (int i = 0; i < count; i++) {
-        sum += arr[i];
+    else {
+        cout << "Invalid number!\n";
+        return 0;
     }
-    cout << "Sum of all elements: " << sum << endl;
+
+    // Print the entire array
+    cout << "\nModified array:\n";
+    for (int i = 0; i < SIZE; i++) {
+        cout << "Word " << i + 1 << ": " << words[i] << endl;
+    }
 
     return 0;
 }
